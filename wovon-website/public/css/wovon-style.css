@@ -1,0 +1,58 @@
+.border-left-basic {
+    border-left: 0.25rem solid #3498DB !important;
+}
+
+.border-left-pro {
+    border-left: 0.25rem solid #F39C13 !important;
+}
+
+.border-left-platinium {
+    border-left: 0.25rem solid #E74C3C !important;
+}
+
+.border-left-payasyougo {
+    border-left: 0.25rem solid #717D7E !important;
+}
+
+.bck-color-basic {
+    background-color: #3498DB !important
+}
+
+.bck-color-pro {
+    background-color: #f39c13 !important;
+}
+
+.bck-color-platinium {
+    background-color: #E74C3C !important
+}
+
+.bck-color-payasyougo {
+    background-color: #717D7E !important
+}
+
+.color-basic {
+    color: #3498DB !important
+}
+
+.color-pro {
+    color: #f39c13 !important;
+}
+
+.color-platinium {
+    color: #E74C3C !important
+}
+
+.color-payasyougo {
+    color: #717D7E !important
+}
+
+.btn-wovon {
+    background-color: #ed701b !important;
+    color: white;
+}
+
+.btn-wovon:hover {
+    background-color: #db6514 !important;
+    color: white !important;
+}
+

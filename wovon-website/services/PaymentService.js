@@ -14,9 +14,9 @@ class PaymentService {
                 }
             ],
             back_urls: {
-                failure: `${process.env.ACCESS_TOKEN}/payment/failure`,
-                pending: `${process.env.ACCESS_TOKEN}/payment/failure`,
-                success: `${process.env.ACCESS_TOKEN}/payment/success?userId=${user_id}&request=${req}&randomKey=${randomKey}`
+                failure: `${process.env.BASE_URL}/payment/failure`,
+                pending: `${process.env.BASE_URL}/payment/failure`,
+                success: `${process.env.BASE_URL}/payment/success?userId=${user_id}&request=${req}&randomKey=${randomKey}`
             },
             auto_return: "approved"
         };

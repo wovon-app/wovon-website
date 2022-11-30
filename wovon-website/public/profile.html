@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">>
+    <meta name="author" content="Wovon">
+
+    <title>Wovon - Admin</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="/public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/public/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/public/css/wovon-style.css" rel="stylesheet">
+
+    <script src="/public/js/profile.js"></script>
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h2 text-gray-900 mb-4">¡Bienvenido!</h1>
+                                    </div>
+                                    <h1 class="h5 text-gray-900">Tu información</h1>
+                                    <form class="row">
+                                        <div class="col-12">
+                                            <input 
+                                                type="text" 
+                                                class="form-control form-control-user"
+                                                id="apiAccessToken"
+                                                placeholder="Token" 
+                                                value="8743b52063cd84097a65d1633f5c74f5"
+                                                readonly
+                                            >
+                                        </div>
+                                    </form>
+                                    <div class="text-center pt-2">
+                                        <p class="text-gray-800 mb-4">Actualmente, tenés <strong id="availableRequests">XX</strong> consultas disponibles.</p>
+                                    </div>
+                                    <hr>
+                                    <h1 class="h5 text-gray-900">Comprar más consultas</h1>
+                                    <div class="row">
+                                        <div class="col-md-6 col-xs-12 mb-4">
+                                            <div class="card border-left-basic shadow h-100 py-2">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div class="text-xs font-weight-bold color-basic text-uppercase mb-1">
+                                                                Plan Básico</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$10</div>
+                                                            <div class="text-gray-800 mt-2">
+                                                                <p>10 consultas a la base de datos</p>
+                                                            </div>  
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <a class="btn bck-color-basic btn-circle" id="buyBasic">
+                                                                <i class="fas fa-shopping-cart text-white"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-12 mb-4">
+                                            <div class="card border-left-pro shadow h-100 py-2">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div class="text-xs font-weight-bold color-pro text-uppercase mb-1">
+                                                                Plan Pro</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$35</div>
+                                                            <div class="text-gray-800 mt-2">
+                                                                <p>50 consultas a la base de datos</p>
+                                                            </div>  
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <a class="btn bck-color-pro btn-circle" id="buyPro">
+                                                                <i class="fas fa-shopping-cart text-white"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-12 mb-4">
+                                            <div class="card border-left-platinium shadow h-100 py-2">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div class="text-xs font-weight-bold color-platinium text-uppercase mb-1">
+                                                                Plan Platinium</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$200</div>
+                                                            <div class="text-gray-800 mt-2">
+                                                                <p>300 consultas a la base de datos</p>
+                                                            </div>  
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <a class="btn bck-color-platinium btn-circle" id="buyPlatinium">
+                                                                <i class="fas fa-shopping-cart text-white"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-12 mb-4">
+                                            <div class="card border-left-payasyougo shadow h-100 py-2">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div class="text-xs font-weight-bold color-payasyougo text-uppercase mb-1">
+                                                                Plan Pay-As-You-Go</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Próximamente</div>
+                                                            <div class="text-gray-800 mt-2">
+                                                                <p>Pagá lo que usas. Disponible próximamente.</p>
+                                                            </div>  
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <a href="" class="btn bck-color-payasyougo btn-circle disabled">
+                                                                <i class="fas fa-shopping-cart text-white"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="text-center">
+                                        <span class="small">© 2022. Todos los derechos reservados</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/public/vendor/jquery/jquery.min.js"></script>
+    <script src="/public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/public/vendor/jquery-easing/jquery.easing.min.js"></script>
+</body>
+
+</html>

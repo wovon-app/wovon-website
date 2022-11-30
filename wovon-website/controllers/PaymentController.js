@@ -5,7 +5,7 @@ class PaymentController {
   
     async getPaymentLink(req, res, price, title, email, user_id, request_qty, random_key) {
         try {
-            const payment = await this.service.create_payment(price, title, email, user_id, request_qty, random_key);
+            const payment = await this.service.createPayment(price, title, email, user_id, request_qty, random_key);
             return payment.init_point;
         } catch (error) {
             console.log(error);
