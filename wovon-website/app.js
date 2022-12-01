@@ -17,7 +17,8 @@ const config = {
     clientID: 'sib80y7mk79Lh3D27fBiOthg15lSTtR3',
     issuerBaseURL: 'https://dev-k6xh810ejrk8x0ze.us.auth0.com',
     routes: {
-        callback: '/loggedin'
+        callback: '/loggedin',
+        postLogoutRedirect: '/loggedout'
     },
 };
 
