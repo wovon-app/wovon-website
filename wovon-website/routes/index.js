@@ -4,7 +4,6 @@ const path = require('path');
 
 const PaymentController = require("../controllers/PaymentController");
 const PaymentService = require("../services/PaymentService");
-const app = require("../app");
 
 const PaymentInstance = new PaymentController(new PaymentService());
 

@@ -8,7 +8,7 @@ const indexRouter = require("./routes/index");
 
 const app = express();
 
-const { auth } = require('express-openid-connect');
+const { auth, requiresAuth } = require('express-openid-connect');
 const config = {
     authRequired: false,
     auth0Logout: true,
@@ -32,5 +32,14 @@ app.use(cookieParser());
 app.use("/", indexRouter);
 app.use(auth(config));
 app.use("/public", express.static(path.join(__dirname, "/public")));
+
+app.get("/internal/user_data", function (req, res, next) {
+    // console.log(JSON.stringify(req.oidc));
+    // res.json({
+    //     "api_token": "xxxxxx",
+    //     "email": JSON.stringify(req.oidc.user)
+    // })
+    res.send(JSON.stringify(req))
+});
 
 module.exports = app;
