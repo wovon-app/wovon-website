@@ -2,81 +2,53 @@ const express = require("express");
 const router = express.Router();
 const path = require('path');
 
+const { auth, requiresAuth } = require('express-openid-connect');
+const config = {
+    authRequired: false,
+    auth0Logout: true,
+    secret: `${process.env.AUTH0_SECRET}`,
+    baseURL: 'http://localhost:3000',
+    clientID: 'sib80y7mk79Lh3D27fBiOthg15lSTtR3',
+    issuerBaseURL: 'https://dev-k6xh810ejrk8x0ze.us.auth0.com'
+};
+
 const PaymentController = require("../controllers/PaymentController");
 const PaymentService = require("../services/PaymentService");
 
 const PaymentInstance = new PaymentController(new PaymentService());
 
-let isLoggedIn = false;
+router.use(auth(config));
 
 router.get("/", function (req, res, next) {
     return res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
-router.post("/loggedin", function (req, res, next) {
-    isLoggedIn = true;
-    res.redirect(req.baseUrl + "/profile");
+router.get("/profile", requiresAuth(), function (req, res, next) {
+    console.log(req.oidc.user);
+    return res.sendFile(path.join(__dirname, '../public', 'profile.html'));
 });
 
-router.get("/loggedout", function (req, res, next) {
-    isLoggedIn = false;
-    res.redirect(req.baseUrl + "/");
+router.get("/payment/make/basic", requiresAuth(), async function (req, res, next) {
+    const link = await PaymentInstance.getPaymentLink(req, res, 10, "Wovon API - Plan Básico", req.query.email, req.query.userId, 10, req.query.randomKey);
+    res.redirect(link);
 });
 
-router.get("/profile", function (req, res, next) {
-    if (isLoggedIn) {
-        return res.sendFile(path.join(__dirname, '../public', 'profile.html'));
-    } else {
-        res.redirect(req.baseUrl + "/login");
-    }
+router.get("/payment/make/pro", requiresAuth(), async function (req, res, next) {
+    const link = await PaymentInstance.getPaymentLink(req, res, 35, "Wovon API - Plan Pro", req.query.email, req.query.userId, 50, req.query.randomKey);
+    res.redirect(link);
 });
 
-router.get("/payment/make/basic", async function (req, res, next) {
-    if (isLoggedIn) {
-        const link = await PaymentInstance.getPaymentLink(req, res, 10, "Wovon API - Plan Básico", req.query.email, req.query.userId, 10, req.query.randomKey);
-        res.redirect(link);
-    } else {
-        res.status(401);
-        res.send('ERROR 401. Unauthorized');
-    }
+router.get("/payment/make/platinium", requiresAuth(), async function (req, res, next) {
+    const link = await PaymentInstance.getPaymentLink(req, res, 200, "Wovon API - Plan Platinium", req.query.email, req.query.userId, 300, req.query.randomKey);
+    res.redirect(link);
 });
 
-router.get("/payment/make/pro", async function (req, res, next) {
-    if (isLoggedIn) {
-        const link = await PaymentInstance.getPaymentLink(req, res, 35, "Wovon API - Plan Pro", req.query.email, req.query.userId, 50, req.query.randomKey);
-        res.redirect(link);
-    } else {
-        res.status(401);
-        res.send('ERROR 401. Unauthorized');
-    }
+router.get("/payment/success", requiresAuth(), function (req, res, next) {
+    return res.sendFile(path.join(__dirname, '../public', 'success.html'));
 });
 
-router.get("/payment/make/platinium", async function (req, res, next) {
-    if (isLoggedIn) {
-        const link = await PaymentInstance.getPaymentLink(req, res, 200, "Wovon API - Plan Platinium", req.query.email, req.query.userId, 300, req.query.randomKey);
-        res.redirect(link);
-    } else {
-        res.status(401);
-        res.send('ERROR 401. Unauthorized');
-    }
-});
-
-router.get("/payment/success", function (req, res, next) {
-    if (isLoggedIn) {
-        return res.sendFile(path.join(__dirname, '../public', 'success.html'));
-    } else {
-        res.status(401);
-        res.send('ERROR 401. Unauthorized');
-    }
-});
-
-router.get("/payment/failure", function (req, res, next) {
-    if (isLoggedIn) {
-        return res.sendFile(path.join(__dirname, '../public', 'failure.html'));
-    } else {
-        res.status(401);
-        res.send('ERROR 401. Unauthorized');
-    }
+router.get("/payment/failure", requiresAuth(), function (req, res, next) {
+    return res.sendFile(path.join(__dirname, '../public', 'failure.html'));
 });
 
 module.exports = router;
