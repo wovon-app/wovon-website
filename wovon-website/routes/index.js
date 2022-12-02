@@ -57,4 +57,8 @@ router.get("/internal/user_data", requiresAuth(), function (req, res, next) {
     });
 });
 
+router.get("/apidocs", function (req, res, next) {
+    res.redirect("https://documenter.getpostman.com/view/23641864/2s8YzL5Rvd");
+});
+
 module.exports = router;
