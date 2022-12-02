@@ -24,22 +24,21 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/profile", requiresAuth(), function (req, res, next) {
-    console.log(req.oidc.user);
     return res.sendFile(path.join(__dirname, '../public', 'profile.html'));
 });
 
 router.get("/payment/make/basic", requiresAuth(), async function (req, res, next) {
-    const link = await PaymentInstance.getPaymentLink(req, res, 10, "Wovon API - Plan Básico", req.query.email, req.query.userId, 10, req.query.randomKey);
+    const link = await PaymentInstance.getPaymentLink(req, res, 10, "Wovon API - Plan Básico", req.query.email, req.query.apiToken, 10, req.query.randomKey);
     res.redirect(link);
 });
 
 router.get("/payment/make/pro", requiresAuth(), async function (req, res, next) {
-    const link = await PaymentInstance.getPaymentLink(req, res, 35, "Wovon API - Plan Pro", req.query.email, req.query.userId, 50, req.query.randomKey);
+    const link = await PaymentInstance.getPaymentLink(req, res, 35, "Wovon API - Plan Pro", req.query.email, req.query.apiToken, 50, req.query.randomKey);
     res.redirect(link);
 });
 
 router.get("/payment/make/platinium", requiresAuth(), async function (req, res, next) {
-    const link = await PaymentInstance.getPaymentLink(req, res, 200, "Wovon API - Plan Platinium", req.query.email, req.query.userId, 300, req.query.randomKey);
+    const link = await PaymentInstance.getPaymentLink(req, res, 200, "Wovon API - Plan Platinium", req.query.email, req.query.apiToken, 300, req.query.randomKey);
     res.redirect(link);
 });
 
@@ -49,6 +48,13 @@ router.get("/payment/success", requiresAuth(), function (req, res, next) {
 
 router.get("/payment/failure", requiresAuth(), function (req, res, next) {
     return res.sendFile(path.join(__dirname, '../public', 'failure.html'));
+});
+
+router.get("/internal/user_data", requiresAuth(), function (req, res, next) {
+    return res.json({
+        'email': req.oidc.user.email,
+        'api_token': req.oidc.user.api_token
+    });
 });
 
 module.exports = router;
