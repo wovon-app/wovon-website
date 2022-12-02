@@ -15,7 +15,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
     .then(data => {
         wovon_access_token = data.token;
     });
-    await fetch(`http://wovon.westus3.cloudapp.azure.com/get_remaining_requests?user_token=${user_api_token}`, {
+    await fetch(`https://wovon.me/api/get_remaining_requests?user_token=${user_api_token}`, {
         headers: {
           'Authorization': `Bearer ${wovon_access_token}`,
         }
@@ -48,7 +48,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
 
 async function callPaymentApi(route, email, user_api_token, wovon_access_token) {
     let random_key;
-    await fetch(`http://wovon.westus3.cloudapp.azure.com/get_random_key?user_token=${user_api_token}`, {
+    await fetch(`https://wovon.me/api/get_random_key?user_token=${user_api_token}`, {
         headers: {
           'Authorization': `Bearer ${wovon_access_token}`,
           'Access-Control-Allow-Origin': '*',

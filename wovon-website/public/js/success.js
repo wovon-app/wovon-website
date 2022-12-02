@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
         wovon_access_token = data.token;
     });
 
-    await fetch(`http://wovon.westus3.cloudapp.azure.com/add_request_for_user`, {
+    await fetch(`https://wovon.me/api/add_request_for_user`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${wovon_access_token}`,
