@@ -56,3 +56,12 @@
     color: white !important;
 }
 
+.index-body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+  
+.wovon-container {
+    flex: 1;
+}

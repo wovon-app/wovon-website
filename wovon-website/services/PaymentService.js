@@ -24,7 +24,7 @@ class PaymentService {
         const payment = await axios.post(url, body, {
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${process.env.ACCESS_TOKEN}`
+                "Authorization": `Bearer ${process.env.MERCADOPAGO_ACCESS_TOKEN}`
             }
         });
 

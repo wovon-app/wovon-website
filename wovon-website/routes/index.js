@@ -57,8 +57,19 @@ router.get("/internal/user_data", requiresAuth(), function (req, res, next) {
     });
 });
 
+router.get("/internal/wovon_token", requiresAuth(), function (req, res, next) {
+    return res.json({
+        'token': process.env.WOVON_ACCESS_TOKEN
+    });
+});
+
+
 router.get("/apidocs", function (req, res, next) {
     res.redirect("https://documenter.getpostman.com/view/23641864/2s8YzL5Rvd");
+});
+
+router.get("/androidapp", function (req, res, next) {
+    res.download(path.join(__dirname, '../public', 'download', 'wovon-app.apk'));
 });
 
 module.exports = router;
