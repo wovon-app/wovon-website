@@ -7,7 +7,7 @@ const config = {
     authRequired: false,
     auth0Logout: true,
     secret: `${process.env.AUTH0_SECRET}`,
-    baseURL: 'http://localhost:3000',
+    baseURL: 'https://wovon.me',
     clientID: 'sib80y7mk79Lh3D27fBiOthg15lSTtR3',
     issuerBaseURL: 'https://dev-k6xh810ejrk8x0ze.us.auth0.com'
 };
