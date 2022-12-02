@@ -1,21 +1,26 @@
-window.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener('DOMContentLoaded', async (event) => {
     let email;
-    let user_id;
+    let user_api_token;
     let random_key;
-    // getDataFromAuth0Api()
-    email = "test_user_7981642@testuser.com";
+
+    await fetch('/internal/user_data')
+    .then(response => response.json())
+    .then(data => {
+        email = data.email;
+        user_api_token = data.api_token;
+    });    
+
     // getDataFromWovonApi()
-    user_id = "1"
     random_key = "123"
 
-    document.querySelector('#apiAccessToken').value = "xxx";
+    document.querySelector('#apiAccessToken').value = user_api_token;
     document.querySelector('#availableRequests').innerHTML = "xxx";
 
-    document.querySelector('#buyBasic').onclick = () => callPaymentApi("basic", email, user_id, random_key);
-    document.querySelector('#buyPro').onclick = () => callPaymentApi("pro", email, user_id, random_key);
-    document.querySelector('#buyPlatinium').onclick = () => callPaymentApi("platinium", email, user_id, random_key);
+    document.querySelector('#buyBasic').onclick = () => callPaymentApi("basic", email, user_api_token, random_key);
+    document.querySelector('#buyPro').onclick = () => callPaymentApi("pro", email, user_api_token, random_key);
+    document.querySelector('#buyPlatinium').onclick = () => callPaymentApi("platinium", email, user_api_token, random_key);
 });
 
-function callPaymentApi(route, email, user_id, random_key) {
-    window.location = `${window.location.origin}/payment/make/${route}?email=${email}&userId=${user_id}&randomKey=${random_key}`;
+function callPaymentApi(route, email, user_api_token, random_key) {
+    window.location = `${window.location.origin}/payment/make/${route}?email=${email}&apiToken=${user_api_token}&randomKey=${random_key}`;
 }

@@ -1,7 +1,7 @@
 const axios = require("axios");
 
 class PaymentService {
-    async createPayment(total, title, email, user_id, req, randomKey) {
+    async createPayment(total, title, email, api_token, req, randomKey) {
         const url = "https://api.mercadopago.com/checkout/preferences";
 
         const body = {
@@ -16,7 +16,7 @@ class PaymentService {
             back_urls: {
                 failure: `${process.env.BASE_URL}/payment/failure`,
                 pending: `${process.env.BASE_URL}/payment/failure`,
-                success: `${process.env.BASE_URL}/payment/success?userId=${user_id}&request=${req}&randomKey=${randomKey}`
+                success: `${process.env.BASE_URL}/payment/success?apiToken=${api_token}&request=${req}&randomKey=${randomKey}`
             },
             auto_return: "approved"
         };
