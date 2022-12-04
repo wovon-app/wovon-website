@@ -45,7 +45,7 @@ window.addEventListener('DOMContentLoaded', async (event) => {
             <div class="alert alert-success" role="alert">
                 Se acreditaron las consultas compradas.
             </div>
-            <a type="button" class="btn btn-wovon" href="/">Vovler al inicio</a>
+            <a type="button" class="btn btn-wovon" href="/profile">Vovler al perfíl</a>
         `
     })
     .catch(() => {
